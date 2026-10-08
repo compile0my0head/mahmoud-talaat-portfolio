@@ -396,7 +396,7 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/sun-south/hero.webp",
       "alt": "Train station design perspective"
     },
-    "description": "<p>Train station design exploring movement, departure, and arrival through architectural form.</p>"
+    "description": "Train station design exploring movement, departure, and arrival through architectural form."
   },
   {
     "title": "Audi Showroom",
@@ -407,7 +407,7 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/audi/hero.webp",
       "alt": "Audi Showroom exterior perspective"
     },
-    "description": "<p>Automotive showroom design with steel structure and glazed facades.</p>"
+    "description": "Automotive showroom design with steel structure and glazed facades."
   },
   {
     "title": "Boutique Hotel of the Arabian Nights",
@@ -418,7 +418,7 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/boutique-hotel/hero.webp",
       "alt": "Boutique Hotel of the Arabian Nights exterior perspective"
     },
-    "description": "<p>Boutique hotel design inspired by Arabian Nights narrative and regional architecture.</p>"
+    "description": "Boutique hotel design inspired by Arabian Nights narrative and regional architecture."
   },
   {
     "title": "Siwa Discovery Center",
@@ -429,7 +429,7 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/siwa/hero.webp",
       "alt": "Siwa Discovery Center exterior view"
     },
-    "description": "<p>Discovery center in Siwa Oasis exploring local heritage and desert landscape integration.</p>"
+    "description": "Discovery center in Siwa Oasis exploring local heritage and desert landscape integration."
   },
   {
     "title": "Alexandria Community Center",
@@ -440,7 +440,7 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/community-center/hero.webp",
       "alt": "Alexandria Community Center exterior perspective"
     },
-    "description": "<p>Community center serving the Alexandria waterfront neighborhood.</p>"
+    "description": "Community center serving the Alexandria waterfront neighborhood."
   },
   {
     "title": "Oblivion: The Sin of Time",
@@ -451,6 +451,6 @@ export const DESIGN_PROJECT_ITEMS: DesignProjectItem[] = [
       "path": "assets/images/design-projects/oblivion/hero.webp",
       "alt": "Oblivion museum design render"
     },
-    "description": "<p>Graduation project: a museum exploring the concept of oblivion and the passage of time.</p>"
+    "description": "Graduation project: a museum exploring the concept of oblivion and the passage of time."
   }
 ];

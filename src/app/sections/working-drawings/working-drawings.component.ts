@@ -12,7 +12,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
     <section id="working-drawings" class="section">
       <div class="container" appFadeIn>
         <div class="section-header">
-          <h2 class="small-caps">WORKING DRAWINGS</h2>
+          <h2>Working Drawings</h2>
           <div class="hairline"></div>
         </div>
         
@@ -22,14 +22,16 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
               <div class="panel-header">
                 <div class="title-group">
                   <h3>{{ project.title }}</h3>
-                  <span class="year badge mono">{{ project.year }}</span>
+                  <span class="year mono">{{ project.year }}</span>
                   @if (project.academic) {
-                    <span class="academic-badge small-caps">Academic Project</span>
+                    <span class="academic-badge">Academic</span>
                   }
                 </div>
-                <div class="sheet-count mono">{{ project.sheets.length }} Sheets</div>
+                <div class="meta mono">{{ project.sheets.length }} Sheets</div>
               </div>
-              
+              @if (project.description) {
+                <p class="project-desc">{{ project.description }}</p>
+              }
               <app-sheet-gallery [sheets]="project.sheets" [projectTitle]="project.title"></app-sheet-gallery>
             </div>
           }
@@ -39,66 +41,66 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
   `,
   styles: [`
     .section {
-      padding: 6rem 2rem;
+      padding: 7rem 2rem;
     }
     .container {
       max-width: 1440px;
       margin: 0 auto;
     }
-    .section-header {
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      h2 { font-size: 1.2rem; color: var(--color-accent); }
-    }
-    .hairline {
-      flex: 1;
-      height: 1px;
-      background-color: rgba(26,26,26,0.1);
-    }
     .projects-list {
       display: flex;
       flex-direction: column;
-      gap: 4rem;
+      gap: 3.5rem;
     }
     .project-panel {
-      background: #fff;
-      border: var(--hairline);
-      border-radius: 8px;
+      background: var(--color-surface);
+      border: 1px solid rgba(26,26,26,0.06);
+      border-radius: var(--radius-md);
       padding: 2rem;
     }
     .panel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     .title-group {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
-      h3 { font-size: 1.5rem; margin: 0; }
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
     }
-    .badge {
-      background: #eee;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
+    .year {
+      font-size: 0.75rem;
+      color: var(--color-muted);
     }
     .academic-badge {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--color-accent);
-      border: 1px solid var(--color-accent);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
+      border: 1px solid rgba(31, 92, 153, 0.2);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
     }
-    .sheet-count {
-      color: rgba(26,26,26,0.6);
-      font-size: 0.9rem;
+    .meta {
+      color: var(--color-muted);
+      font-size: 0.78rem;
+    }
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
     }
   `]
 })

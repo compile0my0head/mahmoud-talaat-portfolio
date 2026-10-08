@@ -12,15 +12,17 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       <section id="design-projects" class="section">
         <div class="container" appFadeIn>
           <div class="section-header">
-            <h2 class="small-caps">DESIGN PROJECTS</h2>
+            <h2>Design Projects</h2>
             <div class="hairline"></div>
           </div>
           
           <div class="compact-grid">
             @for (project of content.designProjectItems(); track project.slug) {
               <div class="design-item">
-                <img [src]="project.image.path" [alt]="project.image.alt" loading="lazy">
-                <div class="overlay">
+                <div class="image-wrap">
+                  <img [src]="project.image.path" [alt]="project.image.alt" loading="lazy">
+                </div>
+                <div class="item-info">
                   <h4>{{ project.title }}</h4>
                   <p>{{ project.description }}</p>
                 </div>
@@ -40,52 +42,59 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       max-width: 1440px;
       margin: 0 auto;
     }
-    .section-header {
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      h2 { font-size: 1.2rem; color: var(--color-accent); }
-    }
-    .hairline {
-      flex: 1;
-      height: 1px;
-      background-color: rgba(26,26,26,0.1);
-    }
     .compact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+
+      @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 520px) {
+        grid-template-columns: 1fr;
+      }
     }
     .design-item {
-      position: relative;
-      aspect-ratio: 1;
       overflow: hidden;
-      border-radius: 4px;
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
+      border: 1px solid rgba(26,26,26,0.06);
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+      &:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        border-color: rgba(26,26,26,0.1);
+
+        .image-wrap img {
+          transform: scale(1.04);
+        }
+      }
+    }
+    .image-wrap {
+      aspect-ratio: 4/3;
+      overflow: hidden;
       
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      
-      .overlay {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        padding: 2rem 1rem 1rem;
-        color: white;
-        opacity: 0;
-        transition: opacity 0.3s;
-        
-        h4 { margin-bottom: 0.25rem; font-size: 1.1rem; }
-        p { font-size: 0.85rem; opacity: 0.9; margin: 0; }
+    }
+    .item-info {
+      padding: 1.25rem;
+
+      h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.01em;
       }
-      
-      &:hover {
-        img { transform: scale(1.05); }
-        .overlay { opacity: 1; }
+      p {
+        font-size: 0.82rem;
+        color: rgba(26,26,26,0.55);
+        line-height: 1.5;
+        margin: 0;
       }
     }
   `]

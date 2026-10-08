@@ -10,26 +10,45 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
   template: `
     <section id="contact" class="section">
       <div class="container" appFadeIn>
-        <div class="contact-card">
-          <h2 class="title">Let's Connect</h2>
-          <p class="subtitle">Open for opportunities in BIM automation and architecture.</p>
-          
-          <div class="links">
-            <a href="mailto:mahmoud.talaat605@gmail.com" class="contact-link">
-              <span class="small-caps">Email</span>
-              <span class="mono">mahmoud.talaat605&#64;gmail.com</span>
-            </a>
+        <div class="section-header">
+          <h2>Contact & Downloads</h2>
+          <div class="hairline"></div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-col">
+            <h3>Get in Touch</h3>
+            <p class="tagline">Open for opportunities in BIM automation and architecture.</p>
             
-            <a href="https://www.linkedin.com/in/mahmoud-talaat605" target="_blank" class="contact-link">
-              <span class="small-caps">LinkedIn</span>
-              <span class="mono">in/mahmoud-talaat605</span>
-            </a>
+            <div class="links">
+              <a href="mailto:mahmoud.talaat605&#64;gmail.com" class="contact-link">
+                <span class="label">Email</span>
+                <span class="value mono">mahmoud.talaat605&#64;gmail.com</span>
+              </a>
+              
+              <a href="https://www.linkedin.com/in/mahmoud-talaat605" target="_blank" class="contact-link">
+                <span class="label">LinkedIn</span>
+                <span class="value mono">in/mahmoud-talaat605</span>
+              </a>
+            </div>
           </div>
-          
-          <div class="downloads">
-            <a [href]="content.config().portfolioPdf" class="btn btn-primary" target="_blank">Portfolio (Web)</a>
-            <a [href]="content.config().portfolioFullPdf" class="btn btn-outline" target="_blank">Full-Res Portfolio</a>
-            <a [href]="content.config().cvPdf" class="btn btn-outline" target="_blank">Download CV</a>
+
+          <div class="downloads-col">
+            <h3>Downloads</h3>
+            <div class="download-links">
+              <a [href]="content.config().portfolioPdf" class="download-item" target="_blank">
+                <span class="dl-label">Portfolio</span>
+                <span class="dl-detail mono">Web version</span>
+              </a>
+              <a [href]="content.config().portfolioFullPdf" class="download-item" target="_blank">
+                <span class="dl-label">Portfolio</span>
+                <span class="dl-detail mono">Full resolution</span>
+              </a>
+              <a [href]="content.config().cvPdf" class="download-item" target="_blank">
+                <span class="dl-label">CV</span>
+                <span class="dl-detail mono">PDF</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -37,35 +56,38 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
   `,
   styles: [`
     .section {
-      padding: 8rem 2rem;
-      background: var(--color-bg);
-      display: flex;
-      justify-content: center;
+      padding: 7rem 2rem;
+      background: var(--color-surface);
     }
-    .contact-card {
-      background: #fff;
-      padding: 4rem;
-      border-radius: 8px;
-      border: var(--hairline);
-      text-align: center;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .title {
-      font-size: 2.5rem;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+
+      @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
       margin-bottom: 0.5rem;
-      color: var(--color-ink);
+      letter-spacing: -0.01em;
     }
-    .subtitle {
-      color: rgba(26,26,26,0.6);
-      margin-bottom: 3rem;
+    .tagline {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      margin-bottom: 2rem;
     }
     .links {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
+      gap: 0.75rem;
     }
     .contact-link {
       display: flex;
@@ -73,40 +95,56 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       text-decoration: none;
       color: var(--color-ink);
       padding: 1rem;
-      border-radius: 4px;
-      transition: background 0.2s;
-      
+      border: 1px solid rgba(26,26,26,0.06);
+      border-radius: var(--radius-md);
+      transition: all 200ms;
+
       &:hover {
-        background: rgba(26,26,26,0.02);
+        border-color: var(--color-accent);
+        .value { color: var(--color-accent); }
+      }
+
+      .label {
+        font-size: 0.65rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+        margin-bottom: 0.25rem;
+      }
+      .value {
+        font-size: 0.9rem;
+        transition: color 200ms;
+      }
+    }
+    .download-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .download-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: var(--color-ink);
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(26,26,26,0.06);
+      transition: all 200ms;
+
+      &:hover {
+        padding-left: 1.25rem;
         color: var(--color-accent);
       }
-      
-      .small-caps { font-size: 0.85rem; color: rgba(26,26,26,0.5); margin-bottom: 0.25rem; }
-      .mono { font-size: 1.1rem; }
-    }
-    .downloads {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .btn {
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s;
-      
-      &.btn-primary {
-        background-color: var(--color-accent);
-        color: white;
-        &:hover { opacity: 0.9; }
+
+      .dl-label {
+        font-size: 0.9rem;
+        font-weight: 500;
       }
-      
-      &.btn-outline {
-        border: 1px solid var(--color-ink);
-        color: var(--color-ink);
-        &:hover { background-color: rgba(26,26,26,0.05); }
+      .dl-detail {
+        font-size: 0.75rem;
+        color: var(--color-muted);
       }
     }
   `]

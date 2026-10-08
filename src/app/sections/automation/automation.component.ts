@@ -12,7 +12,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
     <section id="automation" class="section">
       <div class="container" appFadeIn>
         <div class="section-header">
-          <h2 class="small-caps">BIM AUTOMATION</h2>
+          <h2>BIM Automation</h2>
           <div class="hairline"></div>
         </div>
         
@@ -26,30 +26,17 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
   `,
   styles: [`
     .section {
-      padding: 6rem 2rem;
-      background-color: #fff;
+      padding: 7rem 2rem;
+      background-color: var(--color-surface);
     }
     .container {
       max-width: 1440px;
       margin: 0 auto;
     }
-    .section-header {
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      
-      h2 { font-size: 1.2rem; color: var(--color-accent); }
-    }
-    .hairline {
-      flex: 1;
-      height: 1px;
-      background-color: rgba(26,26,26,0.1);
-    }
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: var(--grid-gap);
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
     }
   `]
 })

@@ -91,7 +91,7 @@ const designProjectFiles = readMarkdownDir('design-projects');
 const designProjectItems = designProjectFiles.map(file => {
   return {
     ...file.data,
-    description: file.content ? String(marked.parse(file.content)).trim() : ''
+    description: file.content ? file.content.trim().replace(/<[^>]*>/g, '') : ''
   };
 }).filter(i => i.enabled).sort((a, b) => a.order - b.order);
 
