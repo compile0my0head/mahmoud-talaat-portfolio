@@ -18,7 +18,6 @@ import { LightboxComponent } from '../lightbox/lightbox.component';
         grab-cursor="true"
         navigation="true"
         keyboard="true"
-        [attr.breakpoints]="breakpointsJson"
         class="sheet-swiper"
       >
         @for (sheet of sheets; track sheet.id; let i = $index) {
@@ -116,13 +115,6 @@ export class SheetGalleryComponent implements AfterViewInit {
 
   lightboxOpen = signal(false);
   currentIndex = signal(0);
-
-  breakpointsJson = JSON.stringify({
-    320: { slidesPerView: 2.3, spaceBetween: 8 },
-    480: { slidesPerView: 3.2, spaceBetween: 10 },
-    768: { slidesPerView: 4.5, spaceBetween: 12 },
-    1200: { slidesPerView: 6, spaceBetween: 14 }
-  });
 
   get lightboxImages() {
     return this.sheets.map(s => ({

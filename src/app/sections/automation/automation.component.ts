@@ -30,7 +30,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       background-color: var(--color-surface);
     }
     .container {
-      max-width: 1280px;
+      max-width: 85rem;
       margin: 0 auto;
     }
     .cards-grid {

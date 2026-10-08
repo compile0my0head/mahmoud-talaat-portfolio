@@ -47,7 +47,7 @@ import { LightboxComponent } from '../../components/lightbox/lightbox.component'
       background: var(--color-bg);
     }
     .container {
-      max-width: 1280px;
+      max-width: 85rem;
       margin: 0 auto;
     }
     .compact-grid {

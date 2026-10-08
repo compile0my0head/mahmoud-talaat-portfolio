@@ -44,7 +44,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       padding: 7rem 2rem;
     }
     .container {
-      max-width: 1280px;
+      max-width: 85rem;
       margin: 0 auto;
     }
     .projects-list {
