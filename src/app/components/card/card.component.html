@@ -1,0 +1,45 @@
+<div class="card">
+  <div class="card-image" (click)="openLightbox()">
+    @if (item.images && item.images.length > 0) {
+      <img [src]="item.images[0].path" [alt]="item.images[0].alt" loading="lazy">
+    } @else {
+      <div class="placeholder">No Image</div>
+    }
+    <div class="badge small-caps">{{ item.tool }}</div>
+  </div>
+  
+  <div class="card-content">
+    <h3 class="title">{{ item.title }}</h3>
+    
+    <div class="details">
+      <div class="detail-block">
+        <span class="label small-caps">Problem:</span>
+        <p>{{ item.problem }}</p>
+      </div>
+      <div class="detail-block">
+        <span class="label small-caps">Solution:</span>
+        <p>{{ item.solution }}</p>
+      </div>
+      <div class="detail-block result">
+        <span class="label small-caps">Result:</span>
+        <p>{{ item.result }}</p>
+      </div>
+    </div>
+    
+    @if (item.video || item.demoUrl) {
+      <div class="actions">
+        @if (item.demoUrl) {
+          <a [href]="item.demoUrl" target="_blank" class="btn-link">View Demo &rarr;</a>
+        }
+      </div>
+    }
+  </div>
+</div>
+
+@if (item.images && item.images.length > 0) {
+  <app-lightbox 
+    [images]="lightboxImages" 
+    [visible]="lightboxOpen()" 
+    (close)="lightboxOpen.set(false)">
+  </app-lightbox>
+}

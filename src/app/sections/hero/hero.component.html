@@ -1,0 +1,20 @@
+<section id="hero" class="hero-section">
+  <div class="grid-bg"></div>
+  <div class="hero-content" appFadeIn>
+    <h1 class="title">{{ content.config().name | uppercase }}</h1>
+    <h2 class="subtitle">{{ content.config().role }}</h2>
+    <p class="tagline mono">{{ content.config().tagline }}</p>
+    
+    <div class="stats-row">
+      @for (counter of content.config().counters; track counter.label) {
+        <app-counter [targetValue]="counter.value" [label]="counter.label"></app-counter>
+      }
+    </div>
+
+    <div class="cta-row">
+      <a [href]="content.config().portfolioPdf" class="btn btn-primary" target="_blank">View Portfolio</a>
+      <a [href]="content.config().cvPdf" class="btn btn-outline" target="_blank">Download CV</a>
+      <a href="#contact" class="btn btn-text">Contact</a>
+    </div>
+  </div>
+</section>

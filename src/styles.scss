@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --color-bg: #F7F6F2;
+  --color-ink: #1A1A1A;
+  --color-accent: #1F5C99;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --grid-gap: 2rem;
+  --hairline: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+}
+
+body {
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.small-caps {
+  font-variant-caps: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+[appFadeIn] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[appFadeIn].visible {
+  opacity: 1;
+  transform: translateY(0);
+}

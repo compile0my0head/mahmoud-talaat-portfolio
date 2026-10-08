@@ -1,0 +1,39 @@
+# src/content/site.yaml
+name: "Mahmoud Talaat"
+role: "BIM Architect"
+tagline: "Revit · Dynamo · BIM Automation"
+email: "mahmoud.talaat605@gmail.com"
+linkedin: "https://www.linkedin.com/in/mahmoud-talaat605"
+portfolioPdf: "assets/documents/portfolio-web.pdf"
+portfolioFullPdf: "assets/documents/portfolio-full.pdf"
+cvPdf: "assets/documents/cv.pdf"
+ogImage: "assets/og-image.png"
+metaDescription: "Mahmoud Talaat — BIM Architect portfolio. Revit, Dynamo, BIM automation, working drawings, and design projects."
+
+accentColor: "#1F5C99"
+backgroundColor: "#F7F6F2"
+inkColor: "#1A1A1A"
+
+counters:
+  - value: 3
+    label: "Working-Drawing Projects"
+  - value: 35
+    label: "Sheets"
+  - value: 4
+    label: "Automation Tools"
+  - value: 6
+    label: "Design Projects"
+
+sections:
+  - id: hero
+    enabled: true
+  - id: automation
+    enabled: true
+  - id: working-drawings
+    enabled: true
+  - id: design-projects
+    enabled: true
+  - id: about
+    enabled: true
+  - id: contact
+    enabled: true
