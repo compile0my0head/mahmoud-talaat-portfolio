@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentService } from '../../services/content.service';
 import { FadeInDirective } from '../../directives/fade-in.directive';
+import { LightboxComponent } from '../../components/lightbox/lightbox.component';
 
 @Component({
   selector: 'app-design-projects',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule, FadeInDirective, LightboxComponent],
   template: `
     @if (content.isSectionEnabled('design-projects')) {
       <section id="design-projects" class="section">
@@ -17,8 +18,8 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
           </div>
           
           <div class="compact-grid">
-            @for (project of content.designProjectItems(); track project.slug) {
-              <div class="design-item">
+            @for (project of content.designProjectItems(); track project.slug; let i = $index) {
+              <div class="design-item" (click)="openLightbox(i)">
                 <div class="image-wrap">
                   <img [src]="project.image.path" [alt]="project.image.alt" loading="lazy">
                 </div>
@@ -31,6 +32,13 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
           </div>
         </div>
       </section>
+
+      <app-lightbox
+        [images]="lightboxImages"
+        [currentIndex]="currentIndex()"
+        [visible]="lightboxOpen()"
+        (close)="lightboxOpen.set(false)">
+      </app-lightbox>
     }
   `,
   styles: [`
@@ -39,13 +47,13 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       background: var(--color-bg);
     }
     .container {
-      max-width: 1440px;
+      max-width: 1280px;
       margin: 0 auto;
     }
     .compact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 2rem;
 
       @media (max-width: 900px) {
         grid-template-columns: repeat(2, 1fr);
@@ -60,6 +68,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       background: var(--color-surface);
       border: 1px solid rgba(26,26,26,0.06);
       transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
 
       &:hover {
         box-shadow: 0 8px 30px rgba(0,0,0,0.08);
@@ -85,14 +94,14 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
       padding: 1.25rem;
 
       h4 {
-        font-size: 0.95rem;
+        font-size: 1rem;
         font-weight: 600;
         margin-bottom: 0.35rem;
         letter-spacing: -0.01em;
       }
       p {
-        font-size: 0.82rem;
-        color: rgba(26,26,26,0.55);
+        font-size: 0.88rem;
+        color: rgba(26,26,26,0.6);
         line-height: 1.5;
         margin: 0;
       }
@@ -101,4 +110,19 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
 })
 export class DesignProjectsComponent {
   content = inject(ContentService);
+  
+  lightboxOpen = signal(false);
+  currentIndex = signal(0);
+  
+  get lightboxImages() {
+    return this.content.designProjectItems().map(p => ({
+      src: p.image.path,
+      alt: p.title
+    }));
+  }
+
+  openLightbox(index: number) {
+    this.currentIndex.set(index);
+    this.lightboxOpen.set(true);
+  }
 }
